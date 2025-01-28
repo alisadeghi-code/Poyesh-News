@@ -1,0 +1,15 @@
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.CoreLayer.deps.json
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.CoreLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.CoreLayer.pdb
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.AssemblyInfo.cs
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\refint\Weblog.CoreLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.pdb
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\ref\Weblog.CoreLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.DataLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.DataLayer.pdb
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.csproj.CopyComplete

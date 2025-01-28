@@ -1,0 +1,15 @@
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\bin\Debug\net5.0\Weblog.DataLayer.deps.json
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\bin\Debug\net5.0\Weblog.DataLayer.runtimeconfig.json
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\bin\Debug\net5.0\Weblog.DataLayer.runtimeconfig.dev.json
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\bin\Debug\net5.0\Weblog.DataLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\bin\Debug\net5.0\Weblog.DataLayer.pdb
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.AssemblyInfo.cs
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\refint\Weblog.DataLayer.dll
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.pdb
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\Weblog.DataLayer.genruntimeconfig.cache
+C:\Users\user\Desktop\Weblog\Weblog.DataLayer\obj\Debug\net5.0\ref\Weblog.DataLayer.dll

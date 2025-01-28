@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'Yekan';
+  src: url('../font/YekanBakhFaNum-Medium.woff2') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'Yekan', sans-serif; /* استفاده از فونت یکان */
+}

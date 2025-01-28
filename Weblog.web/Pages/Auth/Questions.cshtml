@@ -1,0 +1,69 @@
+﻿@page
+@model Weblog.web.Pages.Auth.QuestionsModel
+@{
+    Layout = "Shared/_QuestionsLayout";
+}
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <form id="survey-form" class="signup-form" method="post" asp-page="Questions">
+                <h2 class="form-title">  به سوالات جواب بدهید</h2>
+
+
+                <div class="form-group">
+                    <label>موضوعات مورد علاقه شما چیست؟</label><br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="politics"> سیاسی<br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="economy"> اقتصادی<br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="society"> اجتماعی<br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="sports"> ورزشی<br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="technology"> علمی و فناوری<br>
+                    <input type="radio" asp-for="UserAnswers.Interest" value="culture"> فرهنگ و هنر<br>
+                    <span asp-validation-for="UserAnswers.Interest" class="text-danger" style="color:red"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>چند وقت یک‌بار به اخبار آنلاین مراجعه می‌کنید؟</label><br>
+                    <input type="radio" asp-for="UserAnswers.Frequency" value="daily"> روزانه<br>
+                    <input type="radio" asp-for="UserAnswers.Frequency" value="weekly"> هفتگی<br>
+                    <input type="radio" asp-for="UserAnswers.Frequency" value="monthly"> ماهانه<br>
+                    <input type="radio" asp-for="UserAnswers.Frequency" value="rarely"> به ندرت<br>
+                    <span asp-validation-for="UserAnswers.Frequency" class="text-danger" style="color:red"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>از چه منابعی برای دسترسی به اخبار استفاده می‌کنید؟</label><br>
+                    <input type="radio" asp-for="UserAnswers.Sources" value="news_sites"> سایت‌های خبری<br>
+                    <input type="radio" asp-for="UserAnswers.Sources" value="social_media"> شبکه‌های اجتماعی<br>
+                    <input type="radio" asp-for="UserAnswers.Sources" value="tv"> تلویزیون<br>
+                    <input type="radio" asp-for="UserAnswers.Sources" value="radio"> رادیو<br>
+                    <span asp-validation-for="UserAnswers.Sources" class="text-danger" style="color:red"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>به کدام نوع خبر بیشتر علاقه‌مند هستید؟</label><br>
+                    <input type="radio" asp-for="UserAnswers.NewsType" value="domestic"> اخبار داخلی<br>
+                    <input type="radio" asp-for="UserAnswers.NewsType" value="international"> اخبار بین‌المللی<br>
+                    <input type="radio" asp-for="UserAnswers.NewsType" value="analytical"> گزارش‌های تحلیلی<br>
+                    <input type="radio" asp-for="UserAnswers.NewsType" value="interviews"> مصاحبه‌های ویژه<br>
+                    <span asp-validation-for="UserAnswers.NewsType" class="text-danger"style="color:red"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>آیا مایلید در بحث‌های خبری شرکت کنید و نظرات خود را به اشتراک بگذارید؟</label><br>
+                    <input type="radio" asp-for="UserAnswers.Discussion" value="yes"> بله<br>
+                    <input type="radio" asp-for="UserAnswers.Discussion" value="no"> خیر<br>
+                    <span asp-validation-for="UserAnswers.Discussion" class="text-danger" style="color:red"></span>
+
+                </div>
+
+                <div class="form-group form-button">
+                    <input type="submit" class="form-submit" value="ارسال">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
