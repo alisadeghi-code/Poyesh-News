@@ -23,7 +23,7 @@ namespace Weblog.web.Areas.Admin.Controllers
 				CategorySlug = CategorySlug,
 				PageId = pageId,
 				Title = title,
-				Take = 12
+				Take = 12,
 			};
 			var model = _postservice.GetPostFilterById(param);
 			return View(model);

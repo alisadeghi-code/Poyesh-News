@@ -13,3 +13,4 @@ C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.DataLayer.
 C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\bin\Debug\net5.0\Weblog.DataLayer.pdb
 C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.csproj.AssemblyReference.cache
 C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.csproj.CopyComplete
+C:\Users\user\Desktop\Weblog\Weblog.CoreLayer\obj\Debug\net5.0\Weblog.CoreLayer.sourcelink.json
