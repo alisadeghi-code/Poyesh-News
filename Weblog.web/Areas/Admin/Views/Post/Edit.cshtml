@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label asp-for="SubCategoryId"> </label>
                     <select asp-for="SubCategoryId" class="form-control">
-                        <option value="null">انتخاب کنید</option>
+                        <option value="0">انتخاب کنید</option>
 
                         @foreach (var item in categories.Where(c => c.ParentId == Model.CategoryId))
                         {

@@ -2308,6 +2308,7 @@
   <ItemGroup>
     <Folder Include="Areas\UserPanel\" />
     <Folder Include="wwwroot\authstyles\" />
+    <Folder Include="wwwroot\img\posts\" />
   </ItemGroup>
 
   <ItemGroup>

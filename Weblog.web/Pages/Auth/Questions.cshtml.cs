@@ -58,7 +58,7 @@ namespace Weblog.web.Pages.Auth
                 return Page();
             }
 
-            return RedirectToPage("../Index");
+            return RedirectToPage("SignIn");
         }
 
 

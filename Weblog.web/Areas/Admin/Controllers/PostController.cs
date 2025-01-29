@@ -47,7 +47,7 @@ namespace Weblog.web.Areas.Admin.Controllers
                 Title=postViewModel.Title,
                 Description=postViewModel.Description,
                 ImageFile=postViewModel.ImageFile,
-                SubCategoryId=postViewModel.SubCategoryId,
+                SubCategoryId=postViewModel.SubCategoryId == 0 ? null : postViewModel.SubCategoryId,
                 Slug=postViewModel.Slug,
                 CategoryId=postViewModel.CategoryId,
                 UserId=User.GetUserId()
@@ -55,7 +55,10 @@ namespace Weblog.web.Areas.Admin.Controllers
             });
 
             if (result.Status != OperationResultStatus.Success)
-                return View();
+            {
+                ModelState.AddModelError(nameof(postViewModel.Slug), result.Message);
+                return View(postViewModel);
+            }
 
            return RedirectToAction("Index");
         }
@@ -93,7 +96,7 @@ namespace Weblog.web.Areas.Admin.Controllers
                 Title = editViewModel.Title,
                 Description = editViewModel.Description,
                 ImageFile = editViewModel.ImageFile,
-                SubCategoryId = editViewModel.SubCategoryId,
+                SubCategoryId = editViewModel.SubCategoryId==0?null : editViewModel.SubCategoryId,
                 Slug = editViewModel.Slug,
                 CategoryId = editViewModel.CategoryId,
                 PostId=id
@@ -101,7 +104,10 @@ namespace Weblog.web.Areas.Admin.Controllers
             });
 
             if (result.Status != OperationResultStatus.Success)
-                return View();
+            {
+                ModelState.AddModelError(nameof(editViewModel.Slug), result.Message);
+                return View(editViewModel);
+            }
 
             return RedirectToAction("Index");
         }
