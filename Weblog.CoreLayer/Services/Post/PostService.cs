@@ -80,6 +80,8 @@ namespace Weblog.CoreLayer.Services.Post
                .Include(d => d.SubCategory)
                .Include(c=>c.User)
                .FirstOrDefault(c => c.Slug==slug);
+            if (post == null) return null;
+
             return PostMapper.MapToDto(post);
         }
 

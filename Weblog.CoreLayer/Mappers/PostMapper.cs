@@ -51,6 +51,7 @@ namespace Weblog.CoreLayer.Mappers
                 PostId = post.Id,
                 SubCategoryId = post.SubCategoryId,
                 SubCategory = post.SubCategoryId == null ? null : CategoryMapper.Map(post.SubCategory),
+                UserFullName=post.User?.FullName,
                 
 
             };

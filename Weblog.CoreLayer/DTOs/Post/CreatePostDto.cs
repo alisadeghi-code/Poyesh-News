@@ -44,6 +44,7 @@ namespace Weblog.CoreLayer.DTOs.Post
         public DateTime CreationDate { get; set; }
         public int Visit { get; set; }
         public CategoryDto SubCategory { get; set; }
+        public string UserFullName { get; set; }
 
     }
 }
