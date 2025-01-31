@@ -1848,3 +1848,34 @@ body {
     text-align: right;
 }
 
+.breadcrumbs {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.breadcrumbs__item {
+    display: inline-block;
+    font-size: 14px;
+}
+
+    .breadcrumbs__item:last-child:after {
+        display: none;
+    }
+
+    .breadcrumbs__item i {
+        font-size: 14px;
+    }
+
+    .breadcrumbs__item:after {
+        content: '\f124';
+        font-family: 'ui-icons';
+        display: inline-block;
+        position: relative;
+        top: -1px;
+        font-size: 9px;
+        margin: 0 6px;
+    }
+
+.breadcrumbs__url {
+    color: #83858F;
+}
