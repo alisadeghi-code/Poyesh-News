@@ -15,6 +15,7 @@ namespace Weblog.CoreLayer.Services.Post
         OperationResult EditPost(EditPostDto command);
 
         PostDto GetPostById(int postId);
+        PostDto GetPostBySlug(string slug);
 
         bool IsSlugExist(string slug);  
 

@@ -73,7 +73,17 @@ namespace Weblog.CoreLayer.Services.Post
             return PostMapper.MapToDto(post);
         }
 
-		public PostFilterDto GetPostFilterById(PostFilterParam filterParam)
+        public PostDto GetPostBySlug(string slug)
+        {
+            var post = _context.Posts
+               .Include(d => d.Category)
+               .Include(d => d.SubCategory)
+               .Include(c=>c.User)
+               .FirstOrDefault(c => c.Slug==slug);
+            return PostMapper.MapToDto(post);
+        }
+
+        public PostFilterDto GetPostFilterById(PostFilterParam filterParam)
 		{
 			var result=_context.Posts
                 .Include(d => d.Category)
