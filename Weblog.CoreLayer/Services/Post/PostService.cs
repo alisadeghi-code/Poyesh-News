@@ -108,6 +108,13 @@ namespace Weblog.CoreLayer.Services.Post
             };
 		}
 
+		public List<PostDto> GetRelatedPosts(int groupId)
+		{
+			return _context.Posts.Where(r=>r.CategoryId==groupId||r.SubCategoryId==groupId).OrderByDescending(d=>d.CreationDate)
+				.Include(d => d.Category)
+				.Take(3).Select(post=>PostMapper.MapToDto(post)).ToList();
+		}
+
 		public bool IsSlugExist(string slug)
         {
             return _context.Posts.Any(c => c.Slug == slug.ToSlug());

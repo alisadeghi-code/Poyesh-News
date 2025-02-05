@@ -20,5 +20,7 @@ namespace Weblog.CoreLayer.Services.Post
         bool IsSlugExist(string slug);  
 
         PostFilterDto GetPostFilterById(PostFilterParam filterParam);
+
+        List<PostDto> GetRelatedPosts(int groupId);
     }
 }
