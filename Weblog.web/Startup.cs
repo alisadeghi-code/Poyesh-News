@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Weblog.CoreLayer.Services.Categories;
+using Weblog.CoreLayer.Services.Comment;
 using Weblog.CoreLayer.Services.Email;
 using Weblog.CoreLayer.Services.FileManager;
 using Weblog.CoreLayer.Services.Post;
@@ -38,6 +39,7 @@ namespace Weblog.web
             services.AddScoped<ICategoryService,CategoryService >();
             services.AddScoped<IPostService,PostService>();
             services.AddScoped<IFileManager, FileManager>();
+            services.AddTransient<ICommentService, CommentService>();
             services.AddRazorPages();
             services.AddDbContext<BlogContext>(options =>
             {
