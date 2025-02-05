@@ -14,17 +14,17 @@ namespace Weblog.web.Pages
     public class PostModel : PageModel
     {
         private readonly IPostService _postService;
-        private readonly ICommentService _commentService;
+		private readonly ICommentService _commentService;
 
-		public PostModel(ICommentService commentService)
+		public PostModel(IPostService postService,ICommentService commentService)
 		{
-			_commentService = commentService;
+			_postService = postService;
+            _commentService = commentService;
 		}
 
-		public PostModel(IPostService postService)
-        {
-            _postService = postService;
-        }
+		
+
+		
 
         public PostDto Post { get; set; }
         [BindProperty]
@@ -50,7 +50,7 @@ namespace Weblog.web.Pages
         public IActionResult OnPost(string slug) 
         {
             if (!User.Identity.IsAuthenticated)
-                return RedirectToPage("Auth/SignIn");
+                return RedirectToPage("Post",new  {slug });
             if (!ModelState.IsValid) 
             {
                 Post = _postService.GetPostBySlug(slug);
