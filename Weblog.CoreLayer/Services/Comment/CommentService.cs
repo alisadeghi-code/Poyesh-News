@@ -43,7 +43,8 @@ namespace Weblog.CoreLayer.Services.Comment
 					PostId=comment.PostId,
 					Text=comment.Text,
 					UserFullName=comment.User.FullName,
-					CommentId=comment.PostId
+					CommentId=comment.PostId,
+					CreationDate=comment.CreationDate,
 				}).ToList();
 		}
 	}

@@ -20,5 +20,6 @@ namespace Weblog.CoreLayer.DTOs.Comment
 	{
 		public string UserFullName { get; set; }
         public int CommentId { get; set; }
+		public DateTime CreationDate { get; set; }
     }
 }
