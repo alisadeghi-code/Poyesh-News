@@ -1,5 +1,7 @@
 ﻿@page "{slug}"
+@using Microsoft.Extensions.Hosting
 @using Weblog.CoreLayer.Utilities
+@using Weblog.DataLayer.Entities
 @model Weblog.web.Pages.PostModel
 @{
 	ViewData["Title"] = Model.Post.Title;
@@ -283,7 +285,9 @@
 					</div>
 
 					<!-- Related Posts -->
-					<div class="p-b-30">
+					@if (Model.RelatedPost.Any())
+					{
+						<div class="p-b-30">
 						<div class="how2 how2-cl4 flex-s-c">
 							<h3 class="f1-m-2 cl3 tab01-title">
 								پست های مرتبط
@@ -292,90 +296,39 @@
 
 						<ul class="p-t-35">
 							<li class="flex-wr-sb-s p-b-30">
-								<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-									<img src="/images/post-08.jpg" alt="IMG">
-								</a>
-
-								<div class="size-w-11">
-									<h6 class="p-b-4">
-										<a href="" class="f1-s-5 cl3 hov-cl10 trans-03">
-											این یک متن برای تست است
-										</a>
-									</h6>
-
-									<span class="cl8 txt-center p-b-24">
-										<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-											موسیقی
+									@foreach(var post in Model.RelatedPost)
+									{
+										<a asp-page="Post" asp-route-slug="@post.Slug" class="size-w-10 wrap-pic-w hov1 trans-03">
+											<img src="@Directories.GetPostImage(post.ImageName)" alt="IMG">
 										</a>
 
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
+										<div class="size-w-11">
+											<h6 class="p-b-4">
+												<a asp-page="Post" asp-route-slug="@post.Slug" class="f1-s-5 cl3 hov-cl10 trans-03">
+													@post.Title
+												</a>
+											</h6>
 
-										<span class="f1-s-3">
-											26 بهمن
-										</span>
-									</span>
-								</div>
-							</li>
+											<span class="cl8 txt-center p-b-24">
+												<a href="" class="f1-s-6 cl8 hov-cl10 trans-03">
+													@post.Category.Title
+												</a>
 
-							<li class="flex-wr-sb-s p-b-30">
-								<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-									<img src="/images/latest-03.jpg" alt="IMG">
-								</a>
+												<span class="f1-s-3 m-rl-3">
+													-
+												</span>
 
-								<div class="size-w-11">
-									<h6 class="p-b-4">
-										<a href="" class="f1-s-5 cl3 hov-cl10 trans-03">
-											این یک متن برای تست است
-										</a>
-									</h6>
-
-									<span class="cl8 txt-center p-b-24">
-										<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-											بازی
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											26 بهمن
-										</span>
-									</span>
-								</div>
-							</li>
-
-							<li class="flex-wr-sb-s p-b-30">
-								<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-									<img src="/images/post-02.jpg" alt="IMG">
-								</a>
-
-								<div class="size-w-11">
-									<h6 class="p-b-4">
-										<a href="" class="f1-s-5 cl3 hov-cl10 trans-03">
-											این یک متن برای تست است
-										</a>
-									</h6>
-
-									<span class="cl8 txt-center p-b-24">
-										<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-											جشن ها
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											26 بهمن
-										</span>
-									</span>
-								</div>
+												<span class="f1-s-3">
+													@post.CreationDate
+												</span>
+											</span>
+										</div>
+									}
 							</li>
 						</ul>
 					</div>
+					}
+
 
 
 

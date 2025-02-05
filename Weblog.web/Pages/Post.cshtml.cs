@@ -35,7 +35,8 @@ namespace Weblog.web.Pages
 
 
         public List <CommentDto> Comments { get; set; }
-        public IActionResult OnGet(string slug)
+		public List<PostDto> RelatedPost { get; set; }
+		public IActionResult OnGet(string slug)
         {
             Post=_postService.GetPostBySlug(slug);
             if (Post == null)
@@ -44,7 +45,8 @@ namespace Weblog.web.Pages
             }
 
             Comments = _commentService.GetPostComments(Post.PostId);
-            return Page();
+			RelatedPost = _postService.GetRelatedPosts(Post.SubCategoryId??Post.CategoryId);
+			return Page();
         }
 
         public IActionResult OnPost(string slug) 
@@ -53,8 +55,11 @@ namespace Weblog.web.Pages
                 return RedirectToPage("Post",new  {slug });
             if (!ModelState.IsValid) 
             {
+
                 Post = _postService.GetPostBySlug(slug);
-                return Page();
+				Comments = _commentService.GetPostComments(Post.PostId);
+				RelatedPost = _postService.GetRelatedPosts(Post.SubCategoryId ?? Post.CategoryId);
+				return Page();
             }
 
             _commentService.CreateComment(new CreateCommentDto()
