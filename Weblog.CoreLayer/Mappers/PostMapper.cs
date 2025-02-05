@@ -45,12 +45,12 @@ namespace Weblog.CoreLayer.Mappers
                 Title = post.Title,
                 Slug = post.Slug,
                 Visit = 0,
-                Category = CategoryMapper.Map(post.Category),
-                CreationDate = post.CreationDate,
+                Category = post.Category == null ? null : CategoryMapper.Map(post.Category),
+				CreationDate = post.CreationDate,
                 ImageName = post.ImageName,
                 PostId = post.Id,
                 SubCategoryId = post.SubCategoryId,
-                SubCategory = post.SubCategoryId == null ? null : CategoryMapper.Map(post.SubCategory),
+                SubCategory = post.SubCategory == null ? null : CategoryMapper.Map(post.SubCategory),
                 UserFullName=post.User?.FullName,
                 
 
