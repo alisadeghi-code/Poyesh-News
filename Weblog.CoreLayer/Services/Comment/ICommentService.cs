@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weblog.CoreLayer.DTOs.Comment;
+using Weblog.CoreLayer.Utilities;
 
 namespace Weblog.CoreLayer.Services.Comment
 {
 	public interface ICommentService
 	{
-		void CreateComment(CreateCommentDto command);
+		OperationResult CreateComment(CreateCommentDto command);
 		List<CommentDto> GetPostComments(int postId);
 	}
 }

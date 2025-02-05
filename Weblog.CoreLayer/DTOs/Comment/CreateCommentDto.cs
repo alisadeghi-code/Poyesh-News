@@ -19,5 +19,6 @@ namespace Weblog.CoreLayer.DTOs.Comment
 	public class CommentDto : CreateCommentDto 
 	{
 		public string UserFullName { get; set; }
-	}
+        public int CommentId { get; set; }
+    }
 }
