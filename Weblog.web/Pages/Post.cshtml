@@ -55,7 +55,7 @@
 
 						<div class="flex-wr-s-s p-b-40">
 							<span class="f1-s-3 cl8 m-r-15">
-								<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+								<a  class="f1-s-4 cl8 hov-cl10 trans-03">
 									نویسنده: @Model.Post.UserFullName
 								</a>
 
@@ -70,8 +70,8 @@
 								@Model.Post.Visit بازدید
 							</span>
 
-							<a href="#" class="f1-s-3 cl8 hov-cl10 trans-03 m-r-15">
-								0 کامنت
+							<a  class="f1-s-3 cl8 hov-cl10 trans-03 m-r-15">
+								@Model.Comments.Count کامنت
 							</a>
 						</div>
 
@@ -126,27 +126,34 @@
 
 
 					<!-- Leave a comment -->
-					<div>
-						<h4 class="f1-l-4 cl3 p-b-12">
-							نظر خود را به اشتراک بگذارید
-						</h4>
+					@if (User.Identity.IsAuthenticated)
+					{
+						<div>
+							<h4 class="f1-l-4 cl3 p-b-12">
+								نظر خود را به اشتراک بگذارید
+							</h4>
 
-						<p class="f1-s-13 cl8 p-b-40">
-							ایمیل شما در این قسمت نمایش داده نمیشود
-						</p>
+							<p class="f1-s-13 cl8 p-b-40">
+								ایمیل شما در این قسمت نمایش داده نمیشود
+							</p>
 
-						<form>
-							<textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
+							<form method="post">
+								<input type="hidden" asp-for="PostId" value="@Model.Post.PostId" />
+								<textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" asp-for="Text" placeholder="Comment..."></textarea>
+								<span asp-validation-for="Text" style="color:red"></span>
+								<button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
+									ارسال نظر
+								</button>
+							</form>
+						</div>
+					}
+					else
+					{
+						<div class="aler alert-danger">
+							برای ثبت نظر <a asp-page="Auth/SignIn" style="color:red">وارد حساب کاربری خود شوید</a>
+						</div>
+					}
 
-							<input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="name" placeholder="Name*">
-
-							<input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="email" placeholder="Email*">
-
-							<button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
-								ارسال نظر
-							</button>
-						</form>
-					</div>
 				</div>
 			</div>
 
@@ -339,37 +346,38 @@
 
 			<!-- Comments Section -->
 			<div class="comments-section p-t-40">
-				<h4 class="f1-l-4 cl3 p-b-12">
+				<h4 class="f1-l-4 cl3 p-b-12" style="text-align:center">
 					نظرات کاربران
 				</h4>
 
 				<div class="p-b-40">
 					<!-- Single Comment -->
-					<div class="comment-item flex-wr-sb-s p-b-30">
-						<div class="comment-avatar size-w-10 wrap-pic-w hov1 trans-03">
-							<img src="/images/avatar-01.jpg" alt="AVATAR">
-						</div>
+					@foreach (var comment in Model.Comments)
+					{
+						<div class="comment-item flex-wr-sb-s p-b-30">
+							<div class="comment-avatar size-w-10 wrap-pic-w hov1 trans-03">
+								<img src="/img/avatar-01.jpg" alt="AVATAR">
+							</div>
 
-						<div class="comment-content size-w-11">
-							<h6 class="p-b-4">
-								<a href="#" class="comment-name f1-s-5 cl3 hov-cl10 trans-03">
-									نام کاربر
-								</a>
-							</h6>
+							<div class="comment-content size-w-11">
+								<h6 class="p-b-4">
+									<a href="#" class="comment-name f1-s-5 cl3 hov-cl10 trans-03">
+										@comment.UserFullName
+									</a>
+								</h6>
 
-							<span class="comment-date cl8 txt-center p-b-24">
-								<span class="f1-s-3">
-									26 بهمن 1402
+								<span class="comment-date cl8 txt-center p-b-24">
+									<span class="f1-s-3">
+										@comment.CreationDate.ToShortDateString()
+									</span>
 								</span>
-							</span>
 
-							<p class="comment-text f1-s-11 cl6 p-b-25">
-								این یک نظر تستی است. این متن صرفاً برای نمایش ظاهر بخش نظرات استفاده شده است.
-							</p>
+								<p class="comment-text f1-s-11 cl6 p-b-25">
+									@comment.Text
+								</p>
+							</div>
 						</div>
-					</div>
-
-					
+					}
 				</div>
 			</div>
 

@@ -1943,8 +1943,16 @@ body {
     .comments-section .comment-text {
         font-size: 14px;
         color: #333;
-        line-height: 1.6;
+        line-height: 1.8; /* کمی افزایش فاصله بین خطوط برای خوانایی بهتر */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        max-width: 500px; /* متن را به حداکثر 500 پیکسل محدود می‌کند */
+        display: block; /* اطمینان از اینکه درون بلوک قرار می‌گیرد */
     }
+
+
+
 
 /* برای موبایل */
 @media (max-width: 768px) {
@@ -1958,3 +1966,4 @@ body {
         margin-top: 10px;
     }
 }
+
