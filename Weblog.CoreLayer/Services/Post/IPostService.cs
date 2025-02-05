@@ -22,5 +22,7 @@ namespace Weblog.CoreLayer.Services.Post
         PostFilterDto GetPostFilterById(PostFilterParam filterParam);
 
         List<PostDto> GetRelatedPosts(int groupId);
-    }
+
+		List<PostDto> GetPopularPosts();
+	}
 }

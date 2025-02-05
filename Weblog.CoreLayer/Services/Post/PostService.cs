@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Weblog.CoreLayer.DTOs.Post;
 using Weblog.CoreLayer.Mappers;
@@ -64,7 +65,14 @@ namespace Weblog.CoreLayer.Services.Post
             return OperationResult.Success();
         }
 
-        public PostDto GetPostById(int postId)
+		public List<PostDto> GetPopularPosts()
+		{
+			return _context.Posts.OrderByDescending(d => d.Visit)
+			.Include(d => d.Category)
+			.Take(3).Select(post => PostMapper.MapToDto(post)).ToList();
+		}
+
+		public PostDto GetPostById(int postId)
         {
             var post = _context.Posts
                 .Include(d => d.Category)
