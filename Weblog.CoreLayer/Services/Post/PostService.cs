@@ -69,7 +69,7 @@ namespace Weblog.CoreLayer.Services.Post
 		{
 			return _context.Posts.OrderByDescending(d => d.Visit)
 			.Include(d => d.Category)
-			.Take(3).Select(post => PostMapper.MapToDto(post)).ToList();
+			.Take(5).Select(post => PostMapper.MapToDto(post)).ToList();
 		}
 
 		public PostDto GetPostById(int postId)
