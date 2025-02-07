@@ -46,6 +46,7 @@ namespace Weblog.web.Pages
 
             Comments = _commentService.GetPostComments(Post.PostId);
 			RelatedPost = _postService.GetRelatedPosts(Post.SubCategoryId??Post.CategoryId);
+            _postService.IncreaseVisit(Post.PostId);
 			return Page();
         }
 
