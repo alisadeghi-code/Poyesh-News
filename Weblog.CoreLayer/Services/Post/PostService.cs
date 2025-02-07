@@ -123,6 +123,13 @@ namespace Weblog.CoreLayer.Services.Post
 				.Take(3).Select(post=>PostMapper.MapToDto(post)).ToList();
 		}
 
+		public void IncreaseVisit(int postId)
+		{
+			var post=GetPostById(postId);
+            post.Visit += 1;
+            _context.SaveChanges();
+		}
+
 		public bool IsSlugExist(string slug)
         {
             return _context.Posts.Any(c => c.Slug == slug.ToSlug());
