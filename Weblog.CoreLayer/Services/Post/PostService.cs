@@ -125,7 +125,7 @@ namespace Weblog.CoreLayer.Services.Post
 
 		public void IncreaseVisit(int postId)
 		{
-			var post=GetPostById(postId);
+			var post=_context.Posts.First(p=>p.Id==postId);
             post.Visit += 1;
             _context.SaveChanges();
 		}

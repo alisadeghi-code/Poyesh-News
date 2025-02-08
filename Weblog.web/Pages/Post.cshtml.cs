@@ -8,6 +8,7 @@ using Weblog.CoreLayer.Services.Post;
 using Weblog.CoreLayer.Utilities;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using Weblog.DataLayer.Context;
 
 namespace Weblog.web.Pages
 {
