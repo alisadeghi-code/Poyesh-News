@@ -5,6 +5,9 @@
 @model Weblog.web.Pages.PostModel
 @{
 	ViewData["Title"] = Model.Post.Title;
+	var siteUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+	var postUrl = $"{siteUrl}/post/{Model.Post.Slug}";
+}
 }
 <!-- Breadcrumb -->
 <div class="container">
@@ -93,19 +96,42 @@
 							</span>
 
 							<div class="flex-wr-s-s size-w-0">
-								<a href="#" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
-									<i class="fab fa-facebook-f m-r-7"></i>
+								<a href="https://www.facebook.com/sharer/sharer.php?u=@postUrl" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90% ; background-color: #1877F2" >
+									
 									Facebook
 								</a>
 
-								<a href="#" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
-									<i class="fab fa-twitter m-r-7"></i>
-									Twitter
+								<a href="https://twitter.com/intent/tweet?url=@postUrl" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90%; background-color:black">
+									
+									X
 								</a>
 
-								<a href="#" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
-									<i class="fab fa-google-plus-g m-r-7"></i>
+								<a href="https://api.whatsapp.com/send?text=@postUrl" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90% ; background-color:#25D366">
+									
+									Whatsapp
+								</a>
+
+								<a href="https://t.me/share/url?url=@postUrl" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90% ;background-color:#0088CC">
+									
+									Telegram
+								</a>
+
+								<a href="https://plus.google.com/share?url=@postUrl" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90%;background-color:#DB4437">
+									
 									Google+
+								</a>
+
+								<a href="https://pinterest.com/pin/create/button/?url=@postUrl" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90%;background-color:#E60023">
+									
+									Pinterest
+								</a>
+								<a href="https://eitaa.com/share?url=@postUrl" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90% ; background-color:orange">
+
+									Eitaa
+								</a>
+								<a href="https://rubika.ir/share?url=@postUrl" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03" style="border-radius:90% ;background-color:#734AE8">
+
+									Rubika
 								</a>
 							</div>
 						</div>
