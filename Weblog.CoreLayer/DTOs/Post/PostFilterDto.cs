@@ -18,6 +18,7 @@ namespace Weblog.CoreLayer.DTOs.Post
 	public class PostFilterParam 
 	{
 		public string CategorySlug { get; set; }
+		public string SubCategorySlug { get; set; }
 		public string Title { get; set; }
 		public int Take { get; set; }
 		public int PageId { get; set; }

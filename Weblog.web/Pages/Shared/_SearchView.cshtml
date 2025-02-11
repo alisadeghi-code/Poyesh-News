@@ -1,73 +1,83 @@
 ﻿@using Weblog.CoreLayer.Utilities
+@model Weblog.CoreLayer.DTOs.Post.PostFilterDto
 <div class="row">
 
 	<!-- Item latest -->
 	@foreach (var item in Model.Posts)
 	{
-		<div class="col-sm-6 p-r-25 p-r-15-sr991">
-			<div class="m-b-45">
-				<a asp-page="Post" asp-route-slug="@item.Slug" class="wrap-pic-w hov1 trans-03">
-					<img src="@Directories.GetPostImage(item.ImageName)" alt="@item.Title">
-				</a>
+        <div class="col-sm-6 p-r-25 p-r-15-sr991 ajaxSearch">
+            <div class="m-b-45">
+                <a asp-page="Post" asp-route-slug="@item.Slug" class="wrap-pic-w hov1 trans-03">
+                    <img src="@Directories.GetPostImage(item.ImageName)" alt="@item.Title">
+                </a>
 
-				<div class="p-t-16">
-					<h5 class="p-b-5">
-						<a asp-page="Post" asp-route-slug="@item.Slug" class="f1-m-3 cl2 hov-cl10 trans-03">
-							@item.Title
-						</a>
-					</h5>
+                <div class="p-t-16">
+                    <h5 class="p-b-5">
+                        <a asp-page="Post" asp-route-slug="@item.Slug" class="f1-m-3 cl2 hov-cl10 trans-03">
+                            @item.Title
+                        </a>
+                    </h5>
 
-					<span class="cl8">
-						@if (!string.IsNullOrEmpty(item.UserFullName))
-						{
-							<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-								@item.UserFullName
-							</a>
-						}
-						else
-						{
-							<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-								نویسنده نامعلوم
-							</a>
-						}
+                    <span class="cl8">
+                        @if (!string.IsNullOrEmpty(item.UserFullName))
+                        {
+                            <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                @item.UserFullName
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                نویسنده نامعلوم
+                            </a>
+                        }
+                        <span class="f1-s-3 m-rl-3">
+                            -
+                        </span>
 
-						<span class="f1-s-3 m-rl-3">
-							-
-						</span>
-
-						<span class="f1-s-3">
-							@item.CreationDate.ToShortDateString()
-						</span>
-					</span>
-				</div>
-			</div>
-		</div>
+                        <span class="f1-s-3">
+                            @item.CreationDate.ToShortDateString()
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
 	}
 
 </div>
 <!-- Pagination -->
 @if (Model.PageCount > 1)
 {
+    <nav class="pagination">
 
-	<nav class="pagination">
-		@for (var i = 1; i <= Model.PageCount; i++)
-		{
-			if (i == Model.FilterParam.PageId)
-			{
-				<span class="pagination__page pagination__page--current">@i</span>
-			}
-			else
-			{
-				<a href="#" onclick="ChangePage(@i)" class="pagination__page">@i</a>
-			}
-		}
-		@if (Model.PageCount > Model.FilterParam.PageId)
-		{
+        <!-- دکمه صفحه قبلی -->
+        @if (Model.FilterParam.PageId > 1)
+        {
+            <a href="javascript:void(0);" class="pagination__page pagination__icon pagination__page--prev" onclick="ajaxPagination(@(Model.FilterParam.PageId - 1))">
+                <img src="/images/icons/Previous.png" class="pagination__page pagination__icon pagination__page--prev" alt="Previous">
+            </a>
+        }
 
-			<a href="#" class="pagination__page pagination__icon  pagination__page--next" onclick="ChangePage(@(Model.FilterParam.PageId+1) >
-		<img src="/images/icons/Next.png" class="pagination__page pagination__icon pagination__page--next" alt="Next">
-			</a>
-		}
+        <!-- شماره صفحات -->
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            if (i == Model.FilterParam.PageId)
+            {
+                <span class="pagination__page pagination__page--current">@i</span>
+            }
+            else
+            {
+                <a href="javascript:void(0);" onclick="ajaxPagination(@i)" class="pagination__page">@i</a>
+            }
+        }
 
-	</nav>
+        <!-- دکمه صفحه بعدی -->
+        @if (Model.PageCount > Model.FilterParam.PageId)
+        {
+            <a href="javascript:void(0);" class="pagination__page pagination__icon pagination__page--next" onclick="ajaxPagination(@(Model.FilterParam.PageId + 1))">
+                <img src="/images/icons/Next.png" class="pagination__page pagination__icon pagination__page--next" alt="Next">
+            </a>
+        }
+
+    </nav>
 }

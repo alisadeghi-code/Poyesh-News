@@ -5,6 +5,7 @@
 	<title>@ViewData["Title"] </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/Loading.css">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/images/icons/Pnews.ico"/>
 <!--===============================================================================================-->
@@ -17,15 +18,29 @@
 	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/util.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
-<link rel="stylesheet"  href="/css/font.css">
+	
+    <link rel="stylesheet"  href="/css/font.css">
+
+
+
+	
 </head>
 <body class="animsition">
-	
-	<partial name="_Header" />
 
+	<div class="loading">
+	<img src="/images/icons/loading.gif" alt="loading...">
+	</div>
+	<div class="loader-mask">
+		<div class="loader">
+			<div></div>
+		</div>
+	</div>
+
+	<partial name="_Header" />
+	
 	@RenderBody();
 	
 	<partial name="_Footer" /> 
@@ -49,6 +64,7 @@
 <!--===============================================================================================-->
 	<script src="/js/main.js"></script>
 	<script src="/js/custom.js"></script>
+	@await RenderSectionAsync("Scripts", false)
 
 </body>
 </html>

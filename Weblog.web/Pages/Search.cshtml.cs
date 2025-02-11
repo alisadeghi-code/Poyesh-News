@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -25,7 +25,7 @@ namespace Weblog.web.Pages
             {
                 CategorySlug = categorySlug,
                 PageId = pageId,
-                Take = 1,
+                Take = 2,
                 Title = q
             }) ;
 
@@ -41,7 +41,7 @@ namespace Weblog.web.Pages
 			{
 				CategorySlug = categorySlug,
 				PageId = pageId,
-				Take = 1,
+				Take = 2,
 				Title = q
 			});
 			return Partial("_SearchView", model);
