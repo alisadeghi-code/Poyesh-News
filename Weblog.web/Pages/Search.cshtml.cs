@@ -25,13 +25,26 @@ namespace Weblog.web.Pages
             {
                 CategorySlug = categorySlug,
                 PageId = pageId,
-                Take = 8,
+                Take = 1,
                 Title = q
             }) ;
 
 			LatestPost = _postService.GetLatestposts();
 
 			return Page();
+		}
+
+		public IActionResult OnGetPagination(int pageId = 1, string categorySlug = null, string q = null)
+		{
+
+			var model = _postService.GetPostFilterById(new PostFilterParam()
+			{
+				CategorySlug = categorySlug,
+				PageId = pageId,
+				Take = 1,
+				Title = q
+			});
+			return Partial("_SearchView", model);
 		}
 
 	}

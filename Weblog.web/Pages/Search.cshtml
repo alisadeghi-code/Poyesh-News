@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model Weblog.web.Pages.SearchModel
 @using Weblog.CoreLayer.Services.Categories
 @using Weblog.CoreLayer.DTOs.Categories
@@ -145,78 +145,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-lg-8 p-b-80">
-				<div class="row">
-					
-						<!-- Item latest -->
-						@foreach(var item in Model.PostFilter.Posts)
-						{
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<div class="m-b-45">
-								<a asp-page="Post" asp-route-slug="@item.Slug" class="wrap-pic-w hov1 trans-03">
-									<img src="@Directories.GetPostImage(item.ImageName)" alt="@item.Title">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a asp-page="Post" asp-route-slug="@item.Slug" class="f1-m-3 cl2 hov-cl10 trans-03">
-											@item.Title
-										</a>
-									</h5>
-
-									<span class="cl8">
-										@if (!string.IsNullOrEmpty(item.UserFullName))
-										{
-											<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-												@item.UserFullName
-											</a>
-										}
-										else
-										{
-											<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-												نویسنده نامعلوم
-											</a>
-										}
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											@item.CreationDate.ToShortDateString()
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-						}
-					
-				</div>
-				<!-- Pagination -->
-				@if(Model.PostFilter.PageCount>1)
-				{
-					
-					<nav class="pagination">
-						@for(var i = 1; i <= Model.PostFilter.PageCount; i++)
-						{
-							if (i == Model.PostFilter.FilterParam.PageId)
-							{
-								<span class="pagination__page pagination__page--current">@i</span>
-							}
-							else
-							{
-								<a href="#" onclick="ChangePage(@i)" class="pagination__page">@i</a>
-							}
-						}
-						@if (Model.PostFilter.PageCount > Model.PostFilter.FilterParam.PageId)
-						{
-
-					         <a href="#" class="pagination__page pagination__icon  pagination__page--next" onclick="ChangePage(@(Model.PostFilter.FilterParam.PageId+1) >
-								<img src="/images/icons/Next.png" class="pagination__page pagination__icon pagination__page--next" alt="Next">
-							</a>
-						}
-
-					</nav>
-				}
+				<partial name="Shared/_SearchView" model="Model.PostFilter"></partial>
 				
 			</div>
 
