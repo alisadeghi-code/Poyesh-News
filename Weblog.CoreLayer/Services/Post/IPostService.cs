@@ -24,7 +24,8 @@ namespace Weblog.CoreLayer.Services.Post
         List<PostDto> GetRelatedPosts(int groupId);
 
 		List<PostDto> GetPopularPosts();
+        List<PostDto> GetLatestposts();
 
-        void IncreaseVisit(int postId);
+		void IncreaseVisit(int postId);
 	}
 }

@@ -65,6 +65,14 @@ namespace Weblog.CoreLayer.Services.Post
             return OperationResult.Success();
         }
 
+		public List<PostDto> GetLatestposts()
+		{
+			return _context.Posts.OrderByDescending(d=>d.CreationDate)
+			.Include(p => p.User)
+			.Include(d => d.Category)
+			.Take(5).Select(post => PostMapper.MapToDto(post)).ToList();
+		}
+
 		public List<PostDto> GetPopularPosts()
 		{
 			return _context.Posts.OrderByDescending(d => d.Visit)
@@ -98,7 +106,8 @@ namespace Weblog.CoreLayer.Services.Post
 			var result=_context.Posts
                 .Include(d => d.Category)
                 .Include(d => d.SubCategory)
-                .OrderByDescending(d=> d.CreationDate).AsQueryable();
+				.Include(c => c.User)
+				.OrderByDescending(d=> d.CreationDate).AsQueryable();
             if(!string.IsNullOrWhiteSpace(filterParam.CategorySlug))
                 result=result.Where(r=>r.Category.Slug==filterParam.CategorySlug);
 
@@ -125,9 +134,10 @@ namespace Weblog.CoreLayer.Services.Post
 
 		public void IncreaseVisit(int postId)
 		{
-			var post=_context.Posts.First(p=>p.Id==postId);
-            post.Visit += 1;
-            _context.SaveChanges();
+			var post = _context.Posts
+				.First(p => p.Id == postId);
+			post.Visit += 1;
+			_context.SaveChanges();
 		}
 
 		public bool IsSlugExist(string slug)

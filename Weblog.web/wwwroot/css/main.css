@@ -1967,3 +1967,38 @@ body {
     }
 }
 
+/* Pagination
+/*-------------------------------------------------------*/
+.pagination {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.pagination__page {
+    font-size: 15px;
+    display: inline-block;
+    width: 30px;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 2px;
+    text-align: center;
+    color: #171821;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+    .pagination__page:not(span):hover {
+        background-color: #2de336;
+        border-color: transparent;
+        color: #fff;
+    }
+
+.pagination__page--current {
+    background-color: #2de336;
+    color: #fff;
+    border-color: transparent;
+}
+
+.pagination__icon {
+    font-size: 12px;
+}

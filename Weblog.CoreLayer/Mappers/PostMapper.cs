@@ -44,14 +44,14 @@ namespace Weblog.CoreLayer.Mappers
                 CategoryId = post.CategoryId,
                 Title = post.Title,
                 Slug = post.Slug,
-                Visit = 0,
+                Visit = post.Visit,
                 Category = post.Category == null ? null : CategoryMapper.Map(post.Category),
 				CreationDate = post.CreationDate,
                 ImageName = post.ImageName,
                 PostId = post.Id,
                 SubCategoryId = post.SubCategoryId,
                 SubCategory = post.SubCategory == null ? null : CategoryMapper.Map(post.SubCategory),
-                UserFullName=post.User?.FullName,
+                UserFullName=post.User?.FullName
                 
 
             };
