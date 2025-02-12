@@ -63,7 +63,14 @@ namespace Weblog.CoreLayer.Services.Categories
             return _context.Categories.Select(Category=>CategoryMapper.Map(Category)).ToList();
         }
 
-       public CategoryDto GetCategoryBy(int id)
+		public List<CategoryDto> GetCategories()
+		{
+			return _context.Categories
+                .Take(5)
+                .Select(Category => CategoryMapper.Map(Category)).ToList();
+		}
+
+		public CategoryDto GetCategoryBy(int id)
         {
             var category = _context.Categories.FirstOrDefault(c => c.Id == id);
             if(category==null)

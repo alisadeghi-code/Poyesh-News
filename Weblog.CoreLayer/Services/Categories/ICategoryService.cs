@@ -23,5 +23,7 @@ namespace Weblog.CoreLayer.Services.Categories
         CategoryDto GetCategoryBy(string slug);
 
         bool IsSlugExist(string slug);
-    }
+
+		List<CategoryDto> GetCategories();
+	}
 }

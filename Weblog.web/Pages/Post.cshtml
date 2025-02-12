@@ -7,6 +7,7 @@
 	ViewData["Title"] = Model.Post.Title;
 	var siteUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 	var postUrl = $"{siteUrl}/post/{Model.Post.Slug}";
+
 }
 }
 <!-- Breadcrumb -->
@@ -18,20 +19,20 @@
 			</a>
 		</div>
 		<div class="f2-s-1 p-r-30 m-tb-6">
-			<a asp-page="Category" asp-route-CategoryTitle="@Model.Post.Category.Slug" class="breadcrumb-item f1-s-3 cl9">
+			<a asp-page="Search" asp-route-CategorySlug="@Model.Post.Category.Slug" class="breadcrumb-item f1-s-3 cl9">
 				@Model.Post.Category.Title
 			</a>
 		</div>
 		@if(Model.Post.SubCategory!=null)
 		{
 			<div class="f2-s-1 p-r-30 m-tb-6">
-				<a asp-page="Category" asp-route-CategoryTitle="@Model.Post.SubCategory.Slug" class="breadcrumb-item f1-s-3 cl9">
+				<a asp-page="Search" asp-route-CategorySlug="@Model.Post.SubCategory.Slug" class="breadcrumb-item f1-s-3 cl9">
 					@Model.Post.SubCategory.Title
 				</a>
 			</div>
 		}
 		<div class="f2-s-1 p-r-30 m-tb-6">
-			<a asp-page="Index" class="breadcrumb-item f1-s-3 cl9">
+			<a asp-page="Post" asp-route-Slug="@Model.Post.Slug" class="breadcrumb-item f1-s-3 cl9">
 				@Model.Post.Title
 			</a>
 		</div>
@@ -178,35 +179,15 @@
 						</div>
 
 						<ul class="p-t-35">
-							<li class="how-bor3 p-rl-4">
-								<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-									مد و فشن
-								</a>
-							</li>
-
-							<li class="how-bor3 p-rl-4">
-								<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-									ماشین ها
-								</a>
-							</li>
-
-							<li class="how-bor3 p-rl-4">
-								<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-									اقصاد
-								</a>
-							</li>
-
-							<li class="how-bor3 p-rl-4">
-								<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-									سبک زندگی
-								</a>
-							</li>
-
-							<li class="how-bor3 p-rl-4">
-								<a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
-									سازه ها
-								</a>
-							</li>
+							@foreach(var item in Model.category)
+							{
+								<li class="how-bor3 p-rl-4">
+									<a asp-page="Search" asp-route-categorySlug="@item.Slug" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+										@item.Title
+									</a>
+								</li>
+							}
+							
 						</ul>
 					</div>
 
@@ -241,21 +222,28 @@
 													@post.Title
 												</a>
 											</h6>
+											
+												
+											
+											
+												
+											
 
 											<span class="cl8 txt-center p-b-24">
-												<a href="" class="f1-s-6 cl8 hov-cl10 trans-03">
-													@if (post?.SubCategory?.Title != null)
-													{
-														@post.SubCategory.Title
-													}
-													else
-													{
-														@post?.Category?.Title
-													}
+												@if (post?.SubCategory?.Title != null)
+												{
+												<a asp-page="Search" asp-route-categorySlug="@post.SubCategory.Slug" class="f1-s-6 cl8 hov-cl10 trans-03">
 
-													
+													@post.SubCategory.Title
 												</a>
+												}
+												else
+												{
+													<a asp-page="Search" asp-route-categorySlug="@post.Category.Slug" class="f1-s-6 cl8 hov-cl10 trans-03">
 
+														@post?.Category?.Title
+												</a>
+												}
 												<span class="f1-s-3 m-rl-3">
 													-
 												</span>
@@ -294,7 +282,7 @@
 
 							<div class="comment-content size-w-11">
 								<h6 class="p-b-4">
-									<a href="#" class="comment-name f1-s-5 cl3 hov-cl10 trans-03">
+									<a  class="comment-name f1-s-5 cl3 hov-cl10 trans-03">
 										@comment.UserFullName
 									</a>
 								</h6>

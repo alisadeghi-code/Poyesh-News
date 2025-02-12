@@ -9,6 +9,8 @@ using Weblog.CoreLayer.Utilities;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using Weblog.DataLayer.Context;
+using Weblog.CoreLayer.Services.Categories;
+using Weblog.CoreLayer.DTOs.Categories;
 
 namespace Weblog.web.Pages
 {
@@ -16,11 +18,13 @@ namespace Weblog.web.Pages
     {
         private readonly IPostService _postService;
 		private readonly ICommentService _commentService;
+        private readonly ICategoryService _categoryService;
 
-		public PostModel(IPostService postService,ICommentService commentService)
+		public PostModel(IPostService postService,ICommentService commentService,ICategoryService categoryService)
 		{
 			_postService = postService;
             _commentService = commentService;
+            _categoryService = categoryService;
 		}
 
 		
@@ -33,6 +37,7 @@ namespace Weblog.web.Pages
         public string Text { get; set; }
         [BindProperty]
         public int PostId { get; set; }
+        public List<CategoryDto> category { get; set; }
 
 
         public List <CommentDto> Comments { get; set; }
@@ -44,8 +49,8 @@ namespace Weblog.web.Pages
             {
                 return RedirectToAction("Error");
             }
-
-            Comments = _commentService.GetPostComments(Post.PostId);
+			category = _categoryService.GetCategories();
+			Comments = _commentService.GetPostComments(Post.PostId);
 			RelatedPost = _postService.GetRelatedPosts(Post.SubCategoryId??Post.CategoryId);
             _postService.IncreaseVisit(Post.PostId);
 			return Page();
@@ -57,8 +62,7 @@ namespace Weblog.web.Pages
                 return RedirectToPage("Post",new  {slug });
             if (!ModelState.IsValid) 
             {
-
-                Post = _postService.GetPostBySlug(slug);
+				Post = _postService.GetPostBySlug(slug);
 				Comments = _commentService.GetPostComments(Post.PostId);
 				RelatedPost = _postService.GetRelatedPosts(Post.SubCategoryId ?? Post.CategoryId);
 				return Page();

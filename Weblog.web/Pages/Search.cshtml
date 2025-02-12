@@ -12,7 +12,7 @@
 		category = _categoryservice.GetCategoryBy(Model.PostFilter.FilterParam.CategorySlug);
 		if (category != null)
 		{
-			search = category.Title;
+				search = category.Title; 
 		}
 	}
 	
@@ -70,7 +70,7 @@
                     <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 							@if (firstPost.SubCategory != null)
 							{
-							<a asp-page="Search" asp-route-categorySlug="@firstPost.SubCategory.Slug" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+								<a asp-page="Search" asp-route-subcategorySlug="@firstPost.SubCategory.Slug" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 							
 								@firstPost.SubCategory.Title
 							</a>
@@ -117,7 +117,7 @@
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 									@if (post.SubCategory != null)
 									{
-										<a asp-page="Search" asp-route-categorySlug="@post.SubCategory.Slug" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+										<a asp-page="Search" asp-route-subcategorySlug="@post.SubCategory.Slug" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 
 											@post.SubCategory.Title
 										</a>
@@ -204,17 +204,15 @@
 			var categorySlug = '';
 			var q = '';
 
-			// گرفتن categorySlug و q از URL
+			
 			if (params.has('categorySlug')) {
 				categorySlug = params.get("categorySlug");
 			}
 			if (params.has('q')) {
 				q = params.get("q");
 			}
-
-			// ارسال درخواست Ajax به URL جدید
 			$.ajax({
-				url: `/search/Pagination?pageId=${pageId}&q=${q}&categorySlug=${categorySlug}`, // اضافه کردن categorySlug به URL
+				url: `/search/Pagination?pageId=${pageId}&q=${q}&categorySlug=${categorySlug}`, 
 				type: "get",
 				beforeSend: function () {
 					$(".loading").show();

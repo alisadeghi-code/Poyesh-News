@@ -26,7 +26,7 @@ namespace Weblog.web.Pages
                 CategorySlug = categorySlug,
                 PageId = pageId,
                 Take = 2,
-                Title = q
+                Title = q,
             }) ;
 
 			LatestPost = _postService.GetLatestposts();
@@ -42,7 +42,7 @@ namespace Weblog.web.Pages
 				CategorySlug = categorySlug,
 				PageId = pageId,
 				Take = 2,
-				Title = q
+				Title = q,
 			});
 			return Partial("_SearchView", model);
 		}
